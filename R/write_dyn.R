@@ -45,25 +45,22 @@
 #' end;
 #'
 #' stoch_simul;'
-#' model<-"example1" # This is "example1" of the `Dynare` example files
-#' code<-DynareCodes
-#' write_dyn(model,code)
+#'
+#' # This writes "example1" of the `Dynare` example with dyn extension
+#' write_dyn(model="example1",code=dynareCodes)
+#'
+#' # This writes "example1" of the `Dynare` example with dyn extension in "DynareR/write_dyn" folder
+#'
+#' write_dyn(model="example1",code=dynareCodes,path="DynareR/write_dyn")
 #'}
 #' @seealso write_mod eng_dynare run_model run_dynare
 #' @keywords documentation
 #' @export
-write_dyn <- function(model,code,path="") {
- # model=paste0("DynareR_",model)
-if(path==""){
-  file.create(paste0(model, '.', "dyn"))
-  f <-paste0(model, '.', "dyn")
-  }else{
-    file.create(paste0(path,"/",model, '.', "dyn"))
-  f <-paste0(path,"/",model, '.', "dyn")
-  }
-  writeLines(code, f)
+write_dyn <- function(model,code,path=".") {
+
+  dynareFile <-paste0(path,"/",model, '.', "dyn")
+  if(!dir.exists(path)) dir.create(path,recursive = T)
+  writeLines(code, dynareFile)
 }
-
-
 
 

@@ -52,23 +52,24 @@
 #' end;
 #'
 #' stoch_simul;'
-#' model<-"example1" # This is "example1" of the `Dynare` example files
-#' code<-DynareCodes
-#'run_dynare(model,code)
+#' # This is "example1" of the `Dynare` example files in current working directory
+#'
+#' run_dynare(model="example1",code=DynareCodes)
+#'
+#' # This is "example1" of the `Dynare` example files in "DynareR/run_dynare"
+#' run_dynare(model="example1",code=DynareCodes,path="DynareR/run_dynare")
 #'}
 #' @seealso write_mod write_dyn eng_dynare run_model
 #' @keywords documentation
 #' @export
-run_dynare <- function(model,code,path="") {
-  if(path==""){
-  write_mod(model,code)
-  run_model(model)
-  on.exit(unlink(c(paste0(model,"/",model,".mod"),paste0(model,".mod"))))
-}else{
+run_dynare <- function(model,code,path=".") {
+
+  dynareFile <-paste0(path,"/",model, '.', "mod")
+
   write_mod(model,code,path)
   run_model(model,path)
-  on.exit(unlink(c(paste0(path,"/",model,"/",model,".mod"),paste0(path,"/",model,".mod"))))
-}
+
+  on.exit(unlink(dynareFile),add = T)
 
 }
 

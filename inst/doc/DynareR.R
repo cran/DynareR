@@ -18,10 +18,10 @@ knitr::opts_chunk$set(
 #  devtools::install_github('sagirumati/DynareR')
 
 ## ----includeIRF---------------------------------------------------------------
-#  include_IRF(model="",IRF="",path="")
+#  include_IRF(model="",IRF="",path=".")
 
 ## ----dyn----------------------------------------------------------------------
-#  write_dyn(model, code, path = "")
+#  write_dyn(model, code, path = ".")
 #  
 
 ## ----exampleDyn---------------------------------------------------------------
@@ -70,7 +70,7 @@ knitr::opts_chunk$set(
 #  write_dyn(model,code)
 
 ## ----mod----------------------------------------------------------------------
-#  write_mod(model, code, path = "")
+#  write_mod(model, code, path = ".")
 #  
 
 ## ----examplemod---------------------------------------------------------------
@@ -169,12 +169,19 @@ knitr::opts_chunk$set(
 #  
 
 ## ----runModels----------------------------------------------------------------
-#  run_models(model, path = "")
+#  run_models(model, path = ".")
 #  
 
 ## ----exampleRunModels---------------------------------------------------------
-#  model=c("example1","example2","agtrend","bkk")
-#  run_models(model)
 #  
+#  run_models(model=c("example1","example2","agtrend","bkk"))
+#  
+
+## ----runAllDynare-------------------------------------------------------------
+#  run_models()
+#  
+
+## ----runAllDynare1------------------------------------------------------------
+#  run_models(path = 'DynareR/run_models')
 #  
 
