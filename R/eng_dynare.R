@@ -25,11 +25,13 @@
 #'
 #' Yihui Xie (2014) knitr: A Comprehensive Tool for Reproducible Research in R. In Victoria Stodden, Friedrich Leisch and Roger D. Peng, editors, Implementing Reproducible Computational Research. Chapman and Hall/CRC. ISBN 978-1466561595
 #'
-#' @seealso  write_mod write_dynare run_model run_dynare
+#' @family important functions
 #' @keywords documentation
 #' @export
 eng_dynare <- function(options) {
-  path=model=options$label
+  model=options$label
   code=options$code
-  if(options$eval) run_dynare(model,code,path)
+  if(options$eval) {
+    run_dynare(code,model,import_log=T)
+    }
 }

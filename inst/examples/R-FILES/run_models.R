@@ -1,24 +1,22 @@
-# It is recommended to enclose your codes within a single quote.
-
-FileName<-c("example1","example1_reporting","example2","example2","agtrend","bkk","Ramsey_Example","ramst")
+# This file should be the last to execute
 
 library(DynareR)
 
+# Copy the dynare files to the current working directory
 
-file<-FileName
-code<-DynareCodes
-run_models(file)
+demo(agtrend)
+demo(bkk)
+demo(example1)
 
-# You can create an absolute or relative path for the DynareR files.
-# The following execute existing mod file in "DynareR/run_model/"  folder
-# relative to the current path.
+lapply(c("agtrend","bkk","example1"),\(x) file.copy(paste0("DynareR/run_dynare/",x,"/",x,".mod"),"."))
 
+run_models(c("agtrend","bkk","example1")) # This should be executed after running the demo or after running "agtrend.R", "bkk.R" and "example1.R" models
 
-# path="DynareR/run_models"
+run_models() # Run all models in Current Working Directory.
 
-if(!dir.exists(path)) dir.create(path,recursive = T)
+# Copy the dynare files to the 'DynareR/run_dynare' directory
 
-run_models(file,path)
+lapply(c("agtrend","bkk","example1"),\(x) file.copy(paste0(x,".mod"),"DynareR/run_dynare"))
 
-
+run_models("DynareR/run_dynare*") # Note the * at the end. Run all models in 'DynareR/run_dynare/' folder
 

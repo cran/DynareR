@@ -4,26 +4,24 @@
 \alias{write_mod}
 \title{Write a new \code{mod} file.}
 \usage{
-write_mod(model, code, path = ".")
+write_mod(code, model)
 }
 \arguments{
-\item{model}{Object or a character string representing the name of the model excluding \code{.mod} or \code{.dyn} file extension}
-
 \item{code}{Object or a character string representing the set of \code{Dynare} codes}
 
-\item{path}{Object or a character string representing the path to the folder for the \code{Dynare} file. The current working directory is the default \code{path}. Specify the \code{path} only if the \code{Dynare} files live in different path from the current working directory.}
+\item{model}{Object or a character string representing the name of the \code{Dynare} model file (\code{.mod} or \code{.dyn} extension)}
 }
 \value{
 Set of \code{Dynare} (open-source software for DSGE modelling) outputs
 }
 \description{
-Use \code{write_mod(model,code)} if you want the \code{Dynare} file to live in the current working directory.
-Use \code{write_mod(model,code,path)} if you want the \code{Dynare} file to live in the path different from the current working directory.
+Use \code{write_mod(code="someCode",model="someModel")} if you want the \code{Dynare} file to live in the current working directory.
+Use \code{write_mod(code="someCode",model="someDirectory/someModel")} if you want the \code{Dynare} file to live in the path different from the current working directory (for example, \code{someDirectory}).
 }
 \examples{
 library(DynareR)
 \dontrun{
-DynareCodes='var y, c, k, a, h, b;
+dynareCodes='var y, c, k, a, h, b;
 varexo e, u;
 parameters beta, rho, alpha, delta, theta, psi, tau;
 alpha = 0.36;
@@ -63,14 +61,26 @@ end;
 stoch_simul;'
 
 # This writes "example1" of the `Dynare` example with mod extension
-write_mod(model="example1",code=dynareCodes)
+
+write_mod(code=dynareCodes,model="example1")
 
 # This writes "example1" of the `Dynare` example with mod extension in "DynareR/write_mod" folder
 
-write_mod(model="example1",code=dynareCodes,path="DynareR/write_mod")
+write_mod(code=dynareCodes,model="DynareR/write_mod/example1")
 }
 }
 \seealso{
-write_dynare eng_dynare run_model run_dynare
+Other important functions: 
+\code{\link{DynareR}},
+\code{\link{add_path}()},
+\code{\link{eng_dynare}()},
+\code{\link{import_log}()},
+\code{\link{include_IRF}()},
+\code{\link{run_dynare}()},
+\code{\link{run_models}()},
+\code{\link{set_dynare_version}()},
+\code{\link{set_octave_path}()},
+\code{\link{write_dyn}()}
 }
+\concept{important functions}
 \keyword{documentation}

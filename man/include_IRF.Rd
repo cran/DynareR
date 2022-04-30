@@ -2,16 +2,16 @@
 % Please edit documentation in R/include_IRF.R
 \name{include_IRF}
 \alias{include_IRF}
-\title{Embed the graphs Impulse Response Function (IRF) in R Markdown document}
+\title{Embed the graphs of Impulse Response Function (IRF) in R Markdown document}
 \usage{
-include_IRF(model="",IRF="",path="")
+include_IRF(path = ".", model = "", IRF = "")
 }
 \arguments{
-\item{model}{Object or a character string representing the name of the model excluding \code{.mod} or \code{.dyn} file extension}
+\item{path}{A character string for the path to the IRF graph.}
+
+\item{model}{Object or a character string representing the name of the \code{Dynare} model file (\code{.mod} or \code{.dyn} extension)}
 
 \item{IRF}{A character string for the name of the Impulse Response Function as defined in the \code{Dynare} codes.}
-
-\item{path}{Object or a character string representing the path to the folder for the \code{Dynare} file. The current working directory is the default \code{path}. Specify the \code{path} only if the \code{Dynare} files live in different path from the current working directory.}
 }
 \value{
 Set of \code{Dynare} (open-source software for DSGE modelling) outputs
@@ -22,8 +22,17 @@ Use this function to include \code{Dynare} IRF into the R Markdown document
 \examples{
 \dontrun{
 library(DynareR)
-# include_IRF(model="BKK",IRF="E_H2",path=".")
-}# The above code fetches the IRF graph from "BKK/BKK/graphs/BKK_IRF_E_H2.pdf"
+
+demo(bkk)
+
+include_IRF(model="bkk",IRF="E_H2")
+
+# The above code fetches the IRF graph from "bkk/bkk/graphs/bkk_IRF_E_H2.pdf"
+
+# Alternatively, the `path` argument can be used as follows
+
+include_IRF(path="bkk/bkk/graphs/bkk_IRF_E_H2.pdf")
+}
 }
 \references{
 Bob Rudis (2015).Running Go language chunks in R Markdown (Rmd) files. Available at:  https://gist.github.com/hrbrmstr/9accf90e63d852337cb7
@@ -35,13 +44,24 @@ Yihui Xie (2015) Dynamic Documents with R and knitr. 2nd edition. Chapman and Ha
 Yihui Xie (2014) knitr: A Comprehensive Tool for Reproducible Research in R. In Victoria Stodden, Friedrich Leisch and Roger D. Peng, editors, Implementing Reproducible Computational Research. Chapman and Hall/CRC. ISBN 978-1466561595
 }
 \seealso{
-write_mod write_dynare run_model run_dynare
+Other important functions: 
+\code{\link{DynareR}},
+\code{\link{add_path}()},
+\code{\link{eng_dynare}()},
+\code{\link{import_log}()},
+\code{\link{run_dynare}()},
+\code{\link{run_models}()},
+\code{\link{set_dynare_version}()},
+\code{\link{set_octave_path}()},
+\code{\link{write_dyn}()},
+\code{\link{write_mod}()}
 }
 \author{
-Sagiru Mati, ORCID: 0000-0003-1413-3974, https://smati.com.ng
+\href{https://smati.com.ng}{Sagiru Mati}, \href{https://orcid.org/0000-0003-1413-3974}{ORCID: 0000-0003-1413-3974}
 \itemize{
 \item Yusuf Maitama Sule (Northwest) University Kano, Nigeria
 \item SMATI Academy
 }
 }
+\concept{important functions}
 \keyword{documentation}

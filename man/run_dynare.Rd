@@ -4,22 +4,22 @@
 \alias{run_dynare}
 \title{Create and run \code{Dynare} \code{mod} file}
 \usage{
-run_dynare(model,code,path)
+run_dynare(code, model, import_log = FALSE)
 }
 \arguments{
-\item{model}{Object or a character string representing the name of the model excluding \code{.mod} or \code{.dyn} file extension}
-
 \item{code}{Object or a character string representing the set of \code{Dynare} codes}
 
-\item{path}{Object or a character string representing the path to the folder for the \code{Dynare} file. The current working directory is the default \code{path}. Specify the \code{path} only if the \code{Dynare} files live in different path from the current working directory.}
+\item{model}{Object or a character string representing the name of the \code{Dynare} model file (\code{.mod} or \code{.dyn} extension)}
+
+\item{import_log}{Logical. Whether or not to import \code{dynare} log file.}
 }
 \value{
 Set of \code{Dynare} (open-source software for DSGE modelling) outputs
 }
 \description{
 Use this function to create and run \code{Dynare} \code{mod} file.
-Use \code{run_dynare(model,code)}  if you want the \code{Dynare} files to live in the current working directory.
-Use \code{run_dynare(model,code,path)} if you want the \code{Dynare} files to live in the path different from the current working directory.
+Use \code{run_dynare(code="someCode",model="someModel")}  if you want the \code{Dynare} files to live in the current working directory.
+Use \code{run_dynare(run_dynare(code="someCode",model="someDirectory/someModel"))} if you want the \code{Dynare} files to live in the path different from the current working directory (for example, \code{someDirectory}).
 }
 \examples{
 library(DynareR)
@@ -62,15 +62,39 @@ var e, u = phi*0.009*0.009;
 end;
 
 stoch_simul;'
-# This is "example1" of the `Dynare` example files in current working directory
 
-run_dynare(model="example1",code=DynareCodes)
+# This is "example1" of the `Dynare` example files executed in current working directory
 
-# This is "example1" of the `Dynare` example files in "DynareR/run_dynare"
-run_dynare(model="example1",code=DynareCodes,path="DynareR/run_dynare")
+run_dynare(code=DynareCodes,model="example1",import_log=T)
+
+# import_log=T returns the `dynare` log file as a list of dataframes in an environment `dynare`,
+# which can be accessed using `dynare$modelName`
+
+dynare$example1
+
+dynare$example1$correlations
+
+dynare$example1$autocorrelation[4,3]
+
+knitr::kable(dynare$example1$moments,format='pandoc')
+
+# This is "example1" of the `Dynare` example files executed in "DynareR/run_dynare/" folder
+
+run_dynare(code=DynareCodes,model="DynareR/run_dynare/example1")
 }
 }
 \seealso{
-write_mod write_dyn eng_dynare run_model
+Other important functions: 
+\code{\link{DynareR}},
+\code{\link{add_path}()},
+\code{\link{eng_dynare}()},
+\code{\link{import_log}()},
+\code{\link{include_IRF}()},
+\code{\link{run_models}()},
+\code{\link{set_dynare_version}()},
+\code{\link{set_octave_path}()},
+\code{\link{write_dyn}()},
+\code{\link{write_mod}()}
 }
+\concept{important functions}
 \keyword{documentation}

@@ -1,29 +1,36 @@
+#' @import kableExtra magrittr knitr utils
+
+
 
 # .onload
 
 .onLoad<-function(libname,pkgname){
-  knitr::knit_engines$set(dynare=eng_dynare)
+  knit_engines$set(dynare=eng_dynare)
   set_dynare_version()
-  set_octave_path()
-
+if(!exists("dynare") || !is.environment(dynare)) dynare<<-new.env()
 }
 
 
-# system_exec
 
-system_exec=function(){
-  octave_system_path=eval(expression(octave_system_path),envir = parent.frame())
-  octaveFile=eval(expression(octaveFile),envir = parent.frame()) # Dynamic scoping
-  system2(set_octave_path(octave_system_path),paste("--eval",shQuote(paste("run",octaveFile))))
-}
+# dir_create
 
+dir_create=function(x) if(!dir.exists(x)) dir.create(x,recursive = T)
 
-# Run_model
+#  globalVariables
 
-run_model <- function(model,path=".") {
+globalVariables(c("."))
+
+# run_model
+
+run_model <- function(model,import_log=F) {
+
+  path=dirname(model)
+  model=basename(model)%>%
+    gsub("(\\.mod|\\.dyn)$","",.)
+
 
   modelDir=paste0(path,"/",model)
-  if(!dir.exists(modelDir)) dir.create(modelDir)
+  dir_create(modelDir)
 
   modFile=paste0(path,"/",model,".mod")
   dynFile=paste0(path,"/",model,".dyn")
@@ -38,10 +45,48 @@ run_model <- function(model,path=".") {
 
   octaveFile<-basename(tempfile(model, '.',".m"))   # m is file extension of octave/matlab
 
-  writeLines(c(dynare_version,paste0('cd ',modelDir),sprintf("dynare %s",dynarePath)), octaveFile)
+  if(!exists("addPath")) set_dynare_version()
+
+  writeLines(c(addPath,paste0('cd ',modelDir),sprintf("dynare %s",dynarePath)), octaveFile)
 
 
   on.exit(unlink(octaveFile),add = T)
   system_exec()
+
+  if(import_log) import_log(paste0(modelDir,'/',model,'.log'))
+  }
+
+# system_exec
+
+system_exec=function(){
+  if(!exists("engine_path")) set_octave_path()
+  engine_path=eval(expression(engine_path),envir = parent.frame())
+  octaveFile=eval(expression(octaveFile),envir = parent.frame()) # Dynamic scoping
+  system2(set_octave_path(engine_path),paste("--eval",shQuote(paste("run",octaveFile))))
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ROUGH WORK
+
+
+# summary,steady,eigenvalues,shocks,policy,moments,decomposition,correlations,autocorrelation
+
+# extract_output=function(path,start,end,adjust=c(),pattern="[[:blank:]]{1,}"){
+  # }
+# any(grepl("COEFFICIENTS OF AUTOCORRELATION",log))
 
