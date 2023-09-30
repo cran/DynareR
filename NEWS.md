@@ -1,3 +1,26 @@
+# Dynare 0.1.4
+
+What is new? 
+
+* New function `input_tex()` has been added. It can be used to include raw LaTeX file into R Markdown or Quarto.
+
+* Added new funciton `add_matlab_path()` to replace ``add_path()` function, which is still available for backward compatibility.
+
+* The dependency on kableExtra has been removed
+
+* Updated Octave search path
+
+* The package now chooses the `Octave` version  compatible with installed Dynare, or with the dynare version chosen via `set_dynare_version()` function
+
+* Updated `set_dynare_version()` function
+
+* Author's email changed to <sagirumati@gmail.com>
+
+* Package Title changed to "Bringing the Power of Dynare to R, R Markdown, and Quarto"
+
+* Startup message with citation information
+
+
 # Dynare 0.1.3
 
 What is new? 

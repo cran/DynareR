@@ -86,10 +86,12 @@ run_dynare(code=DynareCodes,model="DynareR/run_dynare/example1")
 \seealso{
 Other important functions: 
 \code{\link{DynareR}},
+\code{\link{add_matlab_path}()},
 \code{\link{add_path}()},
 \code{\link{eng_dynare}()},
 \code{\link{import_log}()},
 \code{\link{include_IRF}()},
+\code{\link{input_tex}()},
 \code{\link{run_models}()},
 \code{\link{set_dynare_version}()},
 \code{\link{set_octave_path}()},

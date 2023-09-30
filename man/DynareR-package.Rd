@@ -4,9 +4,9 @@
 \name{DynareR-package}
 \alias{DynareR}
 \alias{DynareR-package}
-\title{DynareR: A Seamless Integration of 'R' and 'Dynare'}
+\title{DynareR: Bringing the Power of 'Dynare' to 'R', 'R Markdown', and 'Quarto'}
 \description{
-It allows running 'Dynare' program from base R and R Markdown. 'Dynare' is a software platform for handling a wide class of economic models, in particular dynamic stochastic general equilibrium ('DSGE') and overlapping generations ('OLG') models. This package does not only integrate R and Dynare but also serves as a 'Dynare' Knit-Engine for 'knitr' package. The package requires 'Dynare' (<https://www.dynare.org/>) and 'Octave' (<https://www.gnu.org/software/octave/download.html>). Write all your 'Dynare' commands in R or R Markdown chunk.
+It allows running 'Dynare' program from base R, R Markdown and Quarto. 'Dynare' is a software platform for handling a wide class of economic models, in particular dynamic stochastic general equilibrium ('DSGE') and overlapping generations ('OLG') models. This package does not only integrate R and Dynare but also serves as a 'Dynare' Knit-Engine for 'knitr' package. The package requires 'Dynare' (\url{https://www.dynare.org/}) and 'Octave' (\url{https://www.octave.org/download.html}). Write all your 'Dynare' commands in R or R Markdown chunk.
 }
 \seealso{
 Useful links:
@@ -17,10 +17,12 @@ Useful links:
 
 
 Other important functions: 
+\code{\link{add_matlab_path}()},
 \code{\link{add_path}()},
 \code{\link{eng_dynare}()},
 \code{\link{import_log}()},
 \code{\link{include_IRF}()},
+\code{\link{input_tex}()},
 \code{\link{run_dynare}()},
 \code{\link{run_models}()},
 \code{\link{set_dynare_version}()},
@@ -29,7 +31,7 @@ Other important functions:
 \code{\link{write_mod}()}
 }
 \author{
-\strong{Maintainer}: Sagiru Mati \email{smati@smati.com.ng} (\href{https://orcid.org/0000-0003-1413-3974}{ORCID})
+\strong{Maintainer}: Sagiru Mati \email{sagirumati@gmail.com} (\href{https://orcid.org/0000-0003-1413-3974}{ORCID})
 
 }
 \concept{important functions}

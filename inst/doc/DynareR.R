@@ -197,9 +197,11 @@ library(DynareR)
 #  
 #  import_log(path="bkk/bkk.log")
 #  
-#  knitr::kable(dynare$bkk$autocorrelation)  %>% kableExtra::kable_styling(latex_options = c("basic","hold_position","scale_down")) %>%
-#   kableExtra::footnote(general="Some footnote with equation $\\alpha x^2+\\beta x+c=0$", general_title = "*",footnote_as_chunk=T,threeparttable=T,escape=F) %>%
-#  kableExtra::row_spec(0,bold=T)
+#  knitr::kable(dynare$bkk$autocorrelation)
+#  
+#  # %>% kableExtra::kable_styling(latex_options = c("basic","hold_position","scale_down")) %>%
+#  #  kableExtra::footnote(general="Some footnote with equation $\\alpha x^2+\\beta x+c=0$", general_title = "*",footnote_as_chunk=T,threeparttable=T,escape=F) %>%
+#  # kableExtra::row_spec(0,bold=T)
 
 ## ----dynareVersion,eval=F-----------------------------------------------------
 #  set_dynare_version("6-unstable-2022-04-03-0800-700a0e3a")

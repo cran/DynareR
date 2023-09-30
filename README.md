@@ -1,5 +1,14 @@
-DynareR: A Seamless Integration of R and Dynare
+DynareR: Bringing the Power of Dynare to R, R Markdown, and Quarto
 ================
+
+#  <img src="inst/Dynare/DynareR.png" align="right" width="120" />
+
+<!-- badges: start -->
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DynareR)](https://cran.r-project.org/package=DynareR)
+[![CRAN_Status_Badge](https://cranlogs.r-pkg.org/badges/grand-total/DynareR?color=49C31B)](https://cranlogs.r-pkg.org/badges/grand-total/DynareR?color=49C31B)
+[![](https://cranlogs.r-pkg.org/badges/DynareR?color=49C31B)](https://cranlogs.r-pkg.org/badges/DynareR?color=49C31B)
+
+<!-- badges: end -->
 
 # About the Author
 
@@ -532,9 +541,7 @@ import_log(model="bkk")
 
 import_log(path="bkk/bkk.log")
 
-knitr::kable(dynare$bkk$autocorrelation)  %>% kableExtra::kable_styling(latex_options = c("basic","hold_position","scale_down")) %>%
- kableExtra::footnote(general="Some footnote with equation $\\alpha x^2+\\beta x+c=0$", general_title = "*",footnote_as_chunk=T,threeparttable=T,escape=F) %>%
-kableExtra::row_spec(0,bold=T)
+knitr::kable(dynare$bkk$autocorrelation) 
 ```
 
 # 8 set_dynare_version function

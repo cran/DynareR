@@ -12,9 +12,9 @@
 
 <meta name="author" content="Sagiru Mati" />
 
-<meta name="date" content="2022-04-30" />
+<meta name="date" content="2023-09-30" />
 
-<title>DynareR: A Seamless Integration of R and Dynare</title>
+<title>DynareR: Bringing the Power of Dynare to R, R Markdown, and Quarto</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -31,23 +31,23 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
@@ -65,55 +65,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -122,13 +121,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -332,10 +338,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">DynareR: A Seamless Integration of R and
-Dynare</h1>
+<h1 class="title toc-ignore">DynareR: Bringing the Power of Dynare to R,
+R Markdown, and Quarto</h1>
 <h4 class="author">Sagiru Mati</h4>
-<h4 class="date">2022-04-30</h4>
+<h4 class="date">2023-09-30</h4>
 
 
 
@@ -372,11 +378,11 @@ version using the <code>set_dynare_version</code> function.</p>
 <div id="installation" class="section level1">
 <h1>Installation</h1>
 <p>DynareR can be installed using the following commands in R.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;DynareR&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          OR</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>          </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;sagirumati/DynareR&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;DynareR&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>          OR</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>          </span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;sagirumati/DynareR&#39;</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level1">
 <h1>Usage</h1>
@@ -607,12 +613,12 @@ include_IRF(&quot;bkk&quot;,&quot;E_H2&quot;)
 # Alternatively, use the path argument 
 
 ```</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">include_IRF</span>(<span class="at">model=</span><span class="st">&quot;bkk&quot;</span>,<span class="at">IRF =</span> <span class="st">&quot;E_H2&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, use the path argument </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">include_IRF</span>(<span class="at">path=</span><span class="st">&quot;bkk/bkk/graphs/bkk_IRF_E_H2.pdf&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">include_IRF</span>(<span class="at">model=</span><span class="st">&quot;bkk&quot;</span>,<span class="at">IRF =</span> <span class="st">&quot;E_H2&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co"># Alternatively, use the path argument </span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="fu">include_IRF</span>(<span class="at">path=</span><span class="st">&quot;bkk/bkk/graphs/bkk_IRF_E_H2.pdf&quot;</span>)</span></code></pre></div>
 <p>However, Dynare figure can only be dynamically included if the output
 format is pdf as Dynare produces pdf and eps graphs only.</p>
 </div>
@@ -625,49 +631,49 @@ Use
 <code>write_dyn(code=&quot;code&quot;,model=&quot;path/to/someDirectory/someModel&quot;)</code>
 if you want the Dynare file to live in the path different from the
 current working directory.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dynareCodes<span class="ot">=</span><span class="st">&#39;var y, c, k, a, h, b;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">varexo e, u;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">parameters beta, rho, alpha, delta, theta, psi, tau;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">alpha = 0.36;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">rho   = 0.95;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">tau   = 0.025;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">beta  = 0.99;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">delta = 0.025;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">psi   = 0;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">theta = 2.95;</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">phi   = 0.1;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">model;</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="st">c*theta*h^(1+psi)=(1-alpha)*y;</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="st">k = beta*(((exp(b)*c)/(exp(b(+1))*c(+1)))</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="st">          *(exp(b(+1))*alpha*y(+1)+(1-delta)*k));</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="st">y = exp(a)*(k(-1)^alpha)*(h^(1-alpha));</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="st">k = exp(b)*(y-c)+(1-delta)*k(-1);</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="st">a = rho*a(-1)+tau*b(-1) + e;</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="st">b = tau*a(-1)+rho*b(-1) + u;</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="st">initval;</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="st">y = 1.08068253095672;</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="st">c = 0.80359242014163;</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="st">h = 0.29175631001732;</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="st">k = 11.08360443260358;</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="st">a = 0;</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="st">b = 0;</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="st">e = 0;</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="st">u = 0;</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="st">shocks;</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="st">var e; stderr 0.009;</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="st">var u; stderr 0.009;</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="st">var e, u = phi*0.009*0.009;</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="st">stoch_simul;&#39;</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="fu">write_dyn</span>(<span class="at">code=</span>dynareCodes, <span class="at">model=</span><span class="st">&quot;example1&quot;</span>)</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="fu">write_dyn</span>(<span class="at">code=</span>dynareCodes,<span class="at">model=</span><span class="st">&quot;DynareR/write_dyn/example1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>dynareCodes<span class="ot">=</span><span class="st">&#39;var y, c, k, a, h, b;</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="st">varexo e, u;</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="st">parameters beta, rho, alpha, delta, theta, psi, tau;</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="st">alpha = 0.36;</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="st">rho   = 0.95;</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="st">tau   = 0.025;</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="st">beta  = 0.99;</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="st">delta = 0.025;</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="st">psi   = 0;</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="st">theta = 2.95;</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="st">phi   = 0.1;</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="st">model;</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="st">c*theta*h^(1+psi)=(1-alpha)*y;</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="st">k = beta*(((exp(b)*c)/(exp(b(+1))*c(+1)))</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="st">          *(exp(b(+1))*alpha*y(+1)+(1-delta)*k));</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="st">y = exp(a)*(k(-1)^alpha)*(h^(1-alpha));</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="st">k = exp(b)*(y-c)+(1-delta)*k(-1);</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="st">a = rho*a(-1)+tau*b(-1) + e;</span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="st">b = tau*a(-1)+rho*b(-1) + u;</span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="st">initval;</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="st">y = 1.08068253095672;</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="st">c = 0.80359242014163;</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="st">h = 0.29175631001732;</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="st">k = 11.08360443260358;</span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="st">a = 0;</span></span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="st">b = 0;</span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="st">e = 0;</span></span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="st">u = 0;</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="st">shocks;</span></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="st">var e; stderr 0.009;</span></span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a><span class="st">var u; stderr 0.009;</span></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a><span class="st">var e, u = phi*0.009*0.009;</span></span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a><span class="st">stoch_simul;&#39;</span></span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a><span class="fu">write_dyn</span>(<span class="at">code=</span>dynareCodes, <span class="at">model=</span><span class="st">&quot;example1&quot;</span>)</span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a><span class="fu">write_dyn</span>(<span class="at">code=</span>dynareCodes,<span class="at">model=</span><span class="st">&quot;DynareR/write_dyn/example1&quot;</span>)</span></code></pre></div>
 </div>
 <div id="the-write_mod-function" class="section level2">
 <h2>The write_mod function</h2>
@@ -678,49 +684,49 @@ Use
 <code>write_mod(code=&quot;code&quot;,model=&quot;path/to/someDirectory/someModel&quot;)</code>
 if you want the Dynare file to live in the path different from the
 current working directory.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DynareCodes<span class="ot">=</span><span class="st">&#39;var y, c, k, a, h, b;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">varexo e, u;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">parameters beta, rho, alpha, delta, theta, psi, tau;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">alpha = 0.36;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">rho   = 0.95;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">tau   = 0.025;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">beta  = 0.99;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">delta = 0.025;</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">psi   = 0;</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">theta = 2.95;</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">phi   = 0.1;</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="st">model;</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">c*theta*h^(1+psi)=(1-alpha)*y;</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">k = beta*(((exp(b)*c)/(exp(b(+1))*c(+1)))</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">          *(exp(b(+1))*alpha*y(+1)+(1-delta)*k));</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="st">y = exp(a)*(k(-1)^alpha)*(h^(1-alpha));</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="st">k = exp(b)*(y-c)+(1-delta)*k(-1);</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="st">a = rho*a(-1)+tau*b(-1) + e;</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="st">b = tau*a(-1)+rho*b(-1) + u;</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="st">initval;</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="st">y = 1.08068253095672;</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="st">c = 0.80359242014163;</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="st">h = 0.29175631001732;</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="st">k = 11.08360443260358;</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="st">a = 0;</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="st">b = 0;</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="st">e = 0;</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="st">u = 0;</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="st">shocks;</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="st">var e; stderr 0.009;</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="st">var u; stderr 0.009;</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="st">var e, u = phi*0.009*0.009;</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="st">stoch_simul;&#39;</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="fu">write_mod</span>(<span class="at">model=</span><span class="st">&quot;example1&quot;</span>,<span class="at">code=</span>dynareCodes)</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="fu">write_mod</span>(<span class="at">code=</span>dynareCodes,<span class="at">model=</span><span class="st">&quot;DynareR/write_mod/example1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>DynareCodes<span class="ot">=</span><span class="st">&#39;var y, c, k, a, h, b;</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="st">varexo e, u;</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="st">parameters beta, rho, alpha, delta, theta, psi, tau;</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="st">alpha = 0.36;</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="st">rho   = 0.95;</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="st">tau   = 0.025;</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="st">beta  = 0.99;</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="st">delta = 0.025;</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="st">psi   = 0;</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="st">theta = 2.95;</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="st">phi   = 0.1;</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="st">model;</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="st">c*theta*h^(1+psi)=(1-alpha)*y;</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="st">k = beta*(((exp(b)*c)/(exp(b(+1))*c(+1)))</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="st">          *(exp(b(+1))*alpha*y(+1)+(1-delta)*k));</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="st">y = exp(a)*(k(-1)^alpha)*(h^(1-alpha));</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="st">k = exp(b)*(y-c)+(1-delta)*k(-1);</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="st">a = rho*a(-1)+tau*b(-1) + e;</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="st">b = tau*a(-1)+rho*b(-1) + u;</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="st">initval;</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="st">y = 1.08068253095672;</span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="st">c = 0.80359242014163;</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="st">h = 0.29175631001732;</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="st">k = 11.08360443260358;</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="st">a = 0;</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="st">b = 0;</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="st">e = 0;</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="st">u = 0;</span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="st">shocks;</span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="st">var e; stderr 0.009;</span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="st">var u; stderr 0.009;</span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="st">var e, u = phi*0.009*0.009;</span></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="st">stoch_simul;&#39;</span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="fu">write_mod</span>(<span class="at">model=</span><span class="st">&quot;example1&quot;</span>,<span class="at">code=</span>dynareCodes)</span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="fu">write_mod</span>(<span class="at">code=</span>dynareCodes,<span class="at">model=</span><span class="st">&quot;DynareR/write_mod/example1&quot;</span>)</span></code></pre></div>
 </div>
 <div id="the-run_dynare-function" class="section level2">
 <h2>The run_dynare function</h2>
@@ -734,47 +740,47 @@ current working directory. Use <code>import_log=T</code> argument to
 return the <code>dynare</code> log file as list of dataframes in an
 environment <code>dynare</code>, which can be accessed via
 <code>dynare$modelName</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>DynareCodes<span class="ot">=</span><span class="st">&#39;var y, c, k, a, h, b;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">varexo e, u;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">parameters beta, rho, alpha, delta, theta, psi, tau;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">alpha = 0.36;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">rho   = 0.95;</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">tau   = 0.025;</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">beta  = 0.99;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">delta = 0.025;</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">psi   = 0;</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">theta = 2.95;</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">phi   = 0.1;</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">model;</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="st">c*theta*h^(1+psi)=(1-alpha)*y;</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="st">k = beta*(((exp(b)*c)/(exp(b(+1))*c(+1)))</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="st">          *(exp(b(+1))*alpha*y(+1)+(1-delta)*k));</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="st">y = exp(a)*(k(-1)^alpha)*(h^(1-alpha));</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="st">k = exp(b)*(y-c)+(1-delta)*k(-1);</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="st">a = rho*a(-1)+tau*b(-1) + e;</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="st">b = tau*a(-1)+rho*b(-1) + u;</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="st">initval;</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="st">y = 1.08068253095672;</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="st">c = 0.80359242014163;</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="st">h = 0.29175631001732;</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="st">k = 11.08360443260358;</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="st">a = 0;</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="st">b = 0;</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="st">e = 0;</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="st">u = 0;</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="st">shocks;</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="st">var e; stderr 0.009;</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="st">var u; stderr 0.009;</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="st">var e, u = phi*0.009*0.009;</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="st">end;</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="st">stoch_simul;&#39;</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="fu">run_dynare</span>(<span class="at">code=</span>DynareCodes,<span class="at">model=</span><span class="st">&quot;example1&quot;</span>,<span class="at">import_log =</span> T)</span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="fu">run_dynare</span>(<span class="at">code=</span>DynareCodes,<span class="at">model=</span><span class="st">&quot;DynareR/run_dynare/example1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>DynareCodes<span class="ot">=</span><span class="st">&#39;var y, c, k, a, h, b;</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="st">varexo e, u;</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="st">parameters beta, rho, alpha, delta, theta, psi, tau;</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="st">alpha = 0.36;</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="st">rho   = 0.95;</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="st">tau   = 0.025;</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="st">beta  = 0.99;</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="st">delta = 0.025;</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="st">psi   = 0;</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="st">theta = 2.95;</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="st">phi   = 0.1;</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="st">model;</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="st">c*theta*h^(1+psi)=(1-alpha)*y;</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="st">k = beta*(((exp(b)*c)/(exp(b(+1))*c(+1)))</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="st">          *(exp(b(+1))*alpha*y(+1)+(1-delta)*k));</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="st">y = exp(a)*(k(-1)^alpha)*(h^(1-alpha));</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="st">k = exp(b)*(y-c)+(1-delta)*k(-1);</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="st">a = rho*a(-1)+tau*b(-1) + e;</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="st">b = tau*a(-1)+rho*b(-1) + u;</span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="st">initval;</span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="st">y = 1.08068253095672;</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="st">c = 0.80359242014163;</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="st">h = 0.29175631001732;</span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="st">k = 11.08360443260358;</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="st">a = 0;</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="st">b = 0;</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="st">e = 0;</span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="st">u = 0;</span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="st">shocks;</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="st">var e; stderr 0.009;</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="st">var u; stderr 0.009;</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="st">var e, u = phi*0.009*0.009;</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="st">end;</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="st">stoch_simul;&#39;</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="fu">run_dynare</span>(<span class="at">code=</span>DynareCodes,<span class="at">model=</span><span class="st">&quot;example1&quot;</span>,<span class="at">import_log =</span> T)</span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="fu">run_dynare</span>(<span class="at">code=</span>DynareCodes,<span class="at">model=</span><span class="st">&quot;DynareR/run_dynare/example1&quot;</span>)</span></code></pre></div>
 </div>
 <div id="the-run_models-function" class="section level2">
 <h2>The run_models function</h2>
@@ -792,31 +798,31 @@ directory. Use <code>run_models()</code> to exectute all the
 <code>example1.mod</code> are the Dynare model files (with
 <code>mod</code> or <code>dyn</code> extension), which live in the
 current working directory.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">demo</span>(agtrend)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">demo</span>(bkk)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">demo</span>(example1)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Provide the list of the `Dynare` files in a vector</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure that &quot;agtrend.mod&quot;, &quot;bkk.mod&quot; and &quot;example1.mod&quot;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># live in the current working directory</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the dynare files to the current working directory</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">c</span>(<span class="st">&quot;agtrend&quot;</span>,<span class="st">&quot;bkk&quot;</span>,<span class="st">&quot;example1&quot;</span>),\(x) <span class="fu">file.copy</span>(<span class="fu">paste0</span>(x,<span class="st">&quot;/&quot;</span>,x,<span class="st">&quot;.mod&quot;</span>),<span class="st">&quot;.&quot;</span>))</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">run_models</span>(<span class="fu">c</span>(<span class="st">&quot;agtrend&quot;</span>,<span class="st">&quot;bkk&quot;</span>,<span class="st">&quot;example1&quot;</span>)) <span class="co"># Run the models in the vector.</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">demo</span>(agtrend)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">demo</span>(bkk)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">demo</span>(example1)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># Provide the list of the `Dynare` files in a vector</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co"># Ensure that &quot;agtrend.mod&quot;, &quot;bkk.mod&quot; and &quot;example1.mod&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># live in the current working directory</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co"># Copy the dynare files to the current working directory</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">c</span>(<span class="st">&quot;agtrend&quot;</span>,<span class="st">&quot;bkk&quot;</span>,<span class="st">&quot;example1&quot;</span>),\(x) <span class="fu">file.copy</span>(<span class="fu">paste0</span>(x,<span class="st">&quot;/&quot;</span>,x,<span class="st">&quot;.mod&quot;</span>),<span class="st">&quot;.&quot;</span>))</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="fu">run_models</span>(<span class="fu">c</span>(<span class="st">&quot;agtrend&quot;</span>,<span class="st">&quot;bkk&quot;</span>,<span class="st">&quot;example1&quot;</span>)) <span class="co"># Run the models in the vector.</span></span></code></pre></div>
 <p>To run all <code>Dynare</code> models that live in the current
 working directory, use the following:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">run_models</span>() <span class="co"># Run all models in Current Working Directory.</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">run_models</span>() <span class="co"># Run all models in Current Working Directory.</span></span></code></pre></div>
 <p>To run all <code>Dynare</code> models that live in particular path
 (for example ‘DynareR/run_dynare/’ folder), use the following:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the dynare files to the &#39;DynareR/run_dynare&#39; directory</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">c</span>(<span class="st">&quot;agtrend&quot;</span>,<span class="st">&quot;bkk&quot;</span>,<span class="st">&quot;example1&quot;</span>),\(x) <span class="fu">file.copy</span>(<span class="fu">paste0</span>(x,<span class="st">&quot;.mod&quot;</span>),<span class="st">&quot;DynareR/run_dynare&quot;</span>))</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">run_models</span>(<span class="at">model =</span> <span class="st">&#39;DynareR/run_dynare*&#39;</span>) <span class="co"># notice the * at the end</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># Copy the dynare files to the &#39;DynareR/run_dynare&#39; directory</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">c</span>(<span class="st">&quot;agtrend&quot;</span>,<span class="st">&quot;bkk&quot;</span>,<span class="st">&quot;example1&quot;</span>),\(x) <span class="fu">file.copy</span>(<span class="fu">paste0</span>(x,<span class="st">&quot;.mod&quot;</span>),<span class="st">&quot;DynareR/run_dynare&quot;</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="fu">run_models</span>(<span class="at">model =</span> <span class="st">&#39;DynareR/run_dynare*&#39;</span>) <span class="co"># notice the * at the end</span></span></code></pre></div>
 </div>
 </div>
 <div id="import_log-function" class="section level1">
@@ -828,13 +834,15 @@ dataframes, which include <code>summary</code>, <code>shocks</code>,
 accessible via <code>dynare$modelName</code>. if the model name is
 <code>bkk</code>, the policy variables can be obtained via
 <code>dynare$bkk$policy</code> as a dataframe.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">import_log</span>(<span class="at">model=</span><span class="st">&quot;bkk&quot;</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">import_log</span>(<span class="at">path=</span><span class="st">&quot;bkk/bkk.log&quot;</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(dynare<span class="sc">$</span>bkk<span class="sc">$</span>autocorrelation)  <span class="sc">%&gt;%</span> kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">&quot;basic&quot;</span>,<span class="st">&quot;hold_position&quot;</span>,<span class="st">&quot;scale_down&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a> kableExtra<span class="sc">::</span><span class="fu">footnote</span>(<span class="at">general=</span><span class="st">&quot;Some footnote with equation $</span><span class="sc">\\</span><span class="st">alpha x^2+</span><span class="sc">\\</span><span class="st">beta x+c=0$&quot;</span>, <span class="at">general_title =</span> <span class="st">&quot;*&quot;</span>,<span class="at">footnote_as_chunk=</span>T,<span class="at">threeparttable=</span>T,<span class="at">escape=</span>F) <span class="sc">%&gt;%</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">row_spec</span>(<span class="dv">0</span>,<span class="at">bold=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">import_log</span>(<span class="at">model=</span><span class="st">&quot;bkk&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">import_log</span>(<span class="at">path=</span><span class="st">&quot;bkk/bkk.log&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(dynare<span class="sc">$</span>bkk<span class="sc">$</span>autocorrelation) </span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># %&gt;% kableExtra::kable_styling(latex_options = c(&quot;basic&quot;,&quot;hold_position&quot;,&quot;scale_down&quot;)) %&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#  kableExtra::footnote(general=&quot;Some footnote with equation $\\alpha x^2+\\beta x+c=0$&quot;, general_title = &quot;*&quot;,footnote_as_chunk=T,threeparttable=T,escape=F) %&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co"># kableExtra::row_spec(0,bold=T)</span></span></code></pre></div>
 </div>
 <div id="set_dynare_version-function" class="section level1">
 <h1>set_dynare_version function</h1>
@@ -844,13 +852,13 @@ version ranges from 4.6.1 to 9.9. However, if you are using the
 development version of <code>dynare</code>, for example version
 <code>6-unstable-2022-04-03-0800-700a0e3a</code>, you can override the
 default as follows</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_dynare_version</span>(<span class="st">&quot;6-unstable-2022-04-03-0800-700a0e3a&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">set_dynare_version</span>(<span class="st">&quot;6-unstable-2022-04-03-0800-700a0e3a&quot;</span>)</span></code></pre></div>
 </div>
 <div id="set_octave_path-function" class="section level1">
 <h1>set_octave_path function</h1>
 <p>You can use this function if <code>Octave</code> is not installed in
 the standard location</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_octave_path</span>(<span class="st">&#39;C:/Program Files/GNU Octave/Octave-6.4.0/mingw64/bin/octave20.exe&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">set_octave_path</span>(<span class="st">&#39;C:/Program Files/GNU Octave/Octave-6.4.0/mingw64/bin/octave20.exe&#39;</span>)</span></code></pre></div>
 </div>
 <div id="add_path-function" class="section level1">
 <h1>add_path function</h1>
@@ -859,21 +867,21 @@ the standard location</p>
 standard location, use this function to add the <code>matlab</code>
 subdirectory. By default, <code>DynareR</code> does this for if
 <code>dynare</code> is installed in the standard location.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">add_path</span>(<span class="st">&#39;/usr/lib/dynare/matlab&#39;</span>)<span class="co">#  Default for Linux</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add_path</span>(<span class="st">&#39;c:/dynare/5.1/matlab&#39;</span>) <span class="co"># Default for Windows, but 5.1 can change if later version of</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># `Dynare` is installed.</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">add_path</span>(<span class="st">&#39;/usr/lib/dynare/matlab&#39;</span>) <span class="co"># Default for macOS</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">add_path</span>(<span class="st">&#39;/usr/lib/dynare/matlab&#39;</span>)<span class="co">#  Default for Linux</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">add_path</span>(<span class="st">&#39;c:/dynare/5.1/matlab&#39;</span>) <span class="co"># Default for Windows, but 5.1 can change if later version of</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># `Dynare` is installed.</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="fu">add_path</span>(<span class="st">&#39;/usr/lib/dynare/matlab&#39;</span>) <span class="co"># Default for macOS</span></span></code></pre></div>
 </div>
 <div id="demo" class="section level1">
 <h1>Demo</h1>
 <p>The demo files are included and can be accessed via
 demo(package=“DynareR”)</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">demo</span>(run_dynare)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">demo</span>(run_models)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">demo</span>(import_log)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">demo</span>(run_dynare)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">demo</span>(run_models)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">demo</span>(import_log)</span></code></pre></div>
 </div>
 <div id="template" class="section level1">
 <h1>Template</h1>

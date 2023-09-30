@@ -22,22 +22,38 @@
 #' @export
 set_dynare_version <- function(dynare_version="") {
 
+  dynareVersion=dynare_version
 
-  if(dynare_version=="") dynare_version=append(c("4.6.1","4.6.2","4.6.3","4.6.4"), format(seq(5.0,9.9,0.1),2,nsmall = 1)) else dynare_version=dynare_version
+  if(dynareVersion=="") dynareVersion=append(c("4.6.1","4.6.2","4.6.3","4.6.4"), format(seq(5.0,9.9,0.1))) # else dynareVersion=dynareVersion
 
-  if(dir.exists("C:/dynare")){
-    dynare_version=paste0("C:/dynare/",dynare_version,"/matlab") %>%
+  if(Sys.info()['sysname']=="Windows"){  # for Windows
+    matlabPath=paste0("C:/dynare/",dynareVersion,"/matlab") %>%
       .[dir.exists(.)] %>%
       .[length(.)] %>%
       paste0("addpath ",.)
+      # if there is no matlab subdirectory, `matlabPath="addpath "`
+    if(matlabPath!="addpath ") dynareVersion = regmatches(matlabPath, regexpr("(?<=dynare/).*?(?=/matlab)", matlabPath, perl = TRUE)) else dynareVersion=""
+    }
+
+  if(Sys.info()['sysname']=="Darwin"){  # for macOS
+    matlabPath=paste0("/Applications/Dynare/",dynareVersion,"/matlab") %>%
+      .[dir.exists(.)] %>%
+      .[length(.)] %>%
+      paste0("addpath ",.)
+    if(matlabPath!="addpath ") dynareVersion = regmatches(matlabPath, regexpr("(?<=dynare/).*?(?=/matlab)", matlabPath, perl = TRUE)) else dynareVersion=""
   }
 
+  if(dir.exists("/usr/lib/dynare/matlab")) matlabPath<-"addpath /usr/lib/dynare/matlab" # for Linux
+  if(dir.exists(" /usr/lib64/dynare/matlab")) matlabPath<-"addpath  /usr/lib64/dynare/matlab" # for on openSUSE
+  if(dir.exists("/usr/local/lib/dynare/matlab")) matlabPath<-"addpath /usr/local/lib/dynare/matlab" # for macOS
 
-  if(dir.exists("/usr/lib/dynare/matlab")) dynare_version<-"addpath /usr/lib/dynare/matlab"
 
-  if(dir.exists("/usr/local/lib/dynare/matlab")) dynare_version<-"addpath /usr/local/lib/dynare/matlab"
+  if(exists("matlabPath")) matlabPath<<-matlabPath else matlabPath<<-""
+  if(exists("dynareVersion")) dynareVersion<<-dynareVersion else dynareVersion<<-""
+  set_octave_path()
+
+}
 
 
-  addPath<<-dynare_version
-
-  }
+# Dynare dev version
+# 6-unstable-2023-09-28-1543-f2abdb6e

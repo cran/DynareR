@@ -4,10 +4,10 @@
 \alias{set_octave_path}
 \title{Set \code{Octave} path}
 \usage{
-set_octave_path(engine_path="octave")
+set_octave_path(octave_path = "octave")
 }
 \arguments{
-\item{engine_path}{Path to the Octave executable}
+\item{octave_path}{Path to the Octave executable}
 }
 \value{
 Character
@@ -24,10 +24,12 @@ set_octave_path('C:/Program Files/GNU Octave/Octave-6.4.0/mingw64/bin/octave20.e
 \seealso{
 Other important functions: 
 \code{\link{DynareR}},
+\code{\link{add_matlab_path}()},
 \code{\link{add_path}()},
 \code{\link{eng_dynare}()},
 \code{\link{import_log}()},
 \code{\link{include_IRF}()},
+\code{\link{input_tex}()},
 \code{\link{run_dynare}()},
 \code{\link{run_models}()},
 \code{\link{set_dynare_version}()},
