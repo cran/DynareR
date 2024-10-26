@@ -28,6 +28,16 @@ knitr::knit_engines$set(dynare = DynareR::eng_dynare)
 library(DynareR)
 }
 \references{
+Mati S. 2020a. “DynareR: Bringing the Power of Dynare to R, R Markdown, and Quarto.” CRAN. https://CRAN.R-project.org/package=DynareR.
+
+Mati S. 2020b. EviewsR: A Seamless Integration of EViews and R. \url{https://CRAN.R-project.org/package=EviewsR}.
+
+Mati S. 2020c. gretlR: A Seamless Integration of Gretl and R. \url{https://CRAN.R-project.org/package=gretlR}.
+
+Mati S. 2023a. URooTab: Tabular Reporting of EViews Unit Root Tests. \url{https://CRAN.R-project.org/package=URooTab}.
+
+Mati S, Civcir I., and Abba S. I. 2023. “EviewsR: An r Package for Dynamic and Reproducible Research Using EViews, r, r Markdown and Quarto.” The R Journal 15 (2): 169–205. \doi{10.32614/rj-2023-045}.
+
 Bob Rudis (2015).Running Go language chunks in R Markdown (Rmd) files. Available at:  https://gist.github.com/hrbrmstr/9accf90e63d852337cb7
 
 Yihui Xie (2019). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package version 1.24.
@@ -38,7 +48,7 @@ Yihui Xie (2014) knitr: A Comprehensive Tool for Reproducible Research in R. In 
 }
 \seealso{
 Other important functions: 
-\code{\link{DynareR}},
+\code{\link{DynareR-package}},
 \code{\link{add_matlab_path}()},
 \code{\link{add_path}()},
 \code{\link{import_log}()},
@@ -47,6 +57,7 @@ Other important functions:
 \code{\link{run_dynare}()},
 \code{\link{run_models}()},
 \code{\link{set_dynare_version}()},
+\code{\link{set_matlab_path}()},
 \code{\link{set_octave_path}()},
 \code{\link{write_dyn}()},
 \code{\link{write_mod}()}

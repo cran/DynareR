@@ -1,4 +1,5 @@
 #' @import magrittr knitr utils
+#' @importFrom magick image_read image_read_pdf image_trim image_write
 
 
 
@@ -73,30 +74,94 @@ run_model <- function(model,import_log=F) {
 
 
   on.exit(unlink(octaveFile),add = T)
-  system_exec()
+
+  if(octaveExecPath=="") matlab_exec() else octave_exec()
 
   if(import_log) import_log(paste0(modelDir,'/',model,'.log'))
   }
 
-# system_exec
+# octave_exec
 
-system_exec=function(){
-  if(!exists("octavePath")) set_octave_path()
-  octavePath=eval(expression(octavePath),envir = parent.frame())
+octave_exec=function(){
+  if(!exists("octaveExecPath")) set_octave_path()
+  octaveExecPath=eval(expression(octaveExecPath),envir = parent.frame())
   octaveFile=eval(expression(octaveFile),envir = parent.frame()) # Dynamic scoping
-  if(octavePath=="")  stop('Please provide the correct path to the Octave executable compatible with the Dynare Version')
-  system2(set_octave_path(octavePath),paste("--eval",shQuote(paste("run",octaveFile))))
+  if(octaveExecPath=="")  stop('Please provide the correct path to the Octave executable compatible with the Dynare Version')
+  system2(set_octave_path(octaveExecPath),paste("--eval",shQuote(paste("run",octaveFile))))
   }
 
 
 
+# matlab_exec
+
+matlab_exec=function(){
+  if(!exists("matlabExecPath")) set_matlab_path()
+  matlabExecPath=eval(expression(matlabExecPath),envir = parent.frame())
+  octaveFile=eval(expression(octaveFile),envir = parent.frame()) # Dynamic scoping
+  if(matlabExecPath=="")  stop('Please provide the correct path to the Matlab executable compatible with the Dynare Version')
+
+  octaveFile=gsub(".m$","",octaveFile)
+
+  system2(set_matlab_path(matlabExecPath),paste("-batch",octaveFile))
+}
+# Convert pdf to png
+
+pdf2png <- function(path) {
+  # only do the conversion for non-LaTeX output
+  if (knitr::is_latex_output())
+    return(path)
+  path2 <- with_ext(path, "png")
+  img <- image_read_pdf(path)
+  image_write(img, path2, format = "png")
+  path2
+}
+
+# Imported xfun
+
+with_ext=function (x, ext, extra = "")
+{
+  if (anyNA(ext))
+    stop("NA is not allowed in 'ext'")
+  n1 = length(x)
+  n2 = length(ext)
+  if (n1 * n2 == 0)
+    return(x)
+  i = !grepl("^[.]", ext) & ext != ""
+  ext[i] = paste0(".", ext[i])
+  if (all(ext == ""))
+    ext = ""
+  r = sub("[$]$", "?$", reg_ext(extra))
+  if (length(ext) == 1)
+    return(sub(r, ext, x))
+  if (n1 > 1 && n1 != n2)
+    stop("'ext' must be of the same length as 'x'")
+  mapply(sub, r, ext, x, USE.NAMES = FALSE)
+}
 
 
+# Imported xfun
+
+reg_ext=function (extra = "")
+{
+  sprintf("([.](([%s[:alnum:]]+|tar[.](gz|bz2|xz)|nb[.]html)[~#]?))$",
+          extra)
+}
 
 
+# Crop white space of images
 
+plot_crop=function (x){
+  if(endsWith(x,".pdf")){
+    img = image_read_pdf(x,density = 600)
 
+    x=gsub(".pdf$", "_cropped.pdf", x)
+    image_write(image_trim(img),x,format = "pdf",density = 600, quality = 100)
+}  else{
+  img = image_read(x)
+  image_write(image_trim(img), x,quality = 100)
+}
 
+ }
 
 
 

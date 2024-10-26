@@ -4,6 +4,7 @@
 #'
 #' @param IRF A character string for the name of the Impulse Response Function as defined in the `Dynare` codes.
 #' @param path A character string for the path to the IRF graph.
+#' @param crop Whether to crop the white space around the graph
 #' @inheritParams run_dynare
 #' @return Set of \code{Dynare} (open-source software for DSGE modelling) outputs
 #' @author [Sagiru Mati](https://smati.com.ng), [ORCID: 0000-0003-1413-3974](https://orcid.org/0000-0003-1413-3974)
@@ -34,11 +35,19 @@
 #' @family important functions
 #' @keywords documentation
 #' @export
-include_IRF <- function(path=".",model="",IRF="") {
+include_IRF <- function(path=".",model="",IRF="",crop=TRUE) {
 
   if(path!=".") IRFPath=path
 
   if(path=="." && model!="" && IRF!="") IRFPath=paste0(model,"/",model,"/","graphs/",model,"_IRF_",IRF,".pdf")
+
+
+  if(crop) {
+    plot_crop(IRFPath)
+    IRFPath=gsub(".pdf$", "_cropped.pdf", IRFPath) # change the file name because plot_crop adds _cropped to the new image
+    }
+
+   IRFPath=pdf2png(IRFPath)
 
   include_graphics(IRFPath)
 }

@@ -1,3 +1,14 @@
+# Dynare 0.1.5
+
+* Added support for Matlab. The package now works with both Octave and Matlab
+
+* Added ``set_matlab_path()` function, which sets path to the Matlab executable to use.
+
+
+* include_IRF() function gained a new argument `crop=TRUE`. This crops the white space around IRF graphs
+
+* The package now automatically converts IRF graphs to `png` if the output format is not latex
+
 # Dynare 0.1.4
 
 What is new? 
